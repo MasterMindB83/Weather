@@ -12,7 +12,6 @@ import {IForecast} from '../interfaces';
 export class WeatharComponent implements OnInit{
   currentWeather$: IWeather;
   city: string;
-  show: boolean;
   forcasts: IForecast;
     constructor(private data: DataService) {
   }
@@ -23,7 +22,6 @@ export class WeatharComponent implements OnInit{
     try {
     this.data.getWeather(this.city).subscribe((data: IWeather) => this.currentWeather$ = data);
     this.getForcast(this.city);
-    this.isNotFound();
     this.show = false;
     } catch (Exception) {
       this.show = true;
