@@ -20,7 +20,7 @@
   <Table>
     <tr *ngFor="let forcast of forcasts.list">
       <Table class="innerTable">
-        <tr><td>Date:{{forcast.dt*1000|date: 'dd.MM.yyyy HH:mm'}}h</td></tr>
+        <tr><td>Date: {{forcast.dt*1000|date: 'dd.MM.yyyy HH:mm'}}h</td></tr>
         <img src="assets/img/{{forcast.weather[0].icon}}.png">
         <tr><td>Temperature: {{forcast.main.temp-275.15}} °C</td></tr>
         <tr><td>Min: {{forcast.main.temp_min-275.15}} °C, Max: {{forcast.main.temp_max-275.15}} °C</td></tr>
