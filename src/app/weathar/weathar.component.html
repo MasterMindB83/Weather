@@ -1,16 +1,35 @@
 <div class="conteiner">
   <div class="main">
       <a>City:</a><input type="text" [(ngModel)]="city">
-      <button (click)="getWeather()">Weather</button>
+      <button (click)="getWeather()" class="green">Weather</button>
 
   <br>
     <p>{{currentWeather$.name}}, {{currentWeather$.sys.country}}</p>
     <p>Lon:{{currentWeather$.coord.lon}}, Lat:{{currentWeather$.coord.lat}}</p>
-    <!--<img src="https://openweathermap.org/img/w/{{currentWeather$.weather.icon}}.png"><p>Temperature: {{temp}} °C</p>-->
-    <p>Min: {{tempMin}} °C, Max: {{tempMax}} °C</p>
+    <img src="assets/img/{{currentWeather$.weather[0].icon}}.png">
+    <p>Temperature: {{currentWeather$.main.temp - 275.15}} °C</p>
+    <p>Min: {{currentWeather$.main.temp_min - 275.15}} °C, Max: {{currentWeather$.main.temp_max - 275.15}} °C</p>
     <p>Wind: {{currentWeather$.wind.speed}} m/s</p>
-    <!--<p>Description: {{currentWeather$.weather.description}}</p>-->
-    <p>Date: {{date| date}}</p>
-    <P>Sunrise: {{sunrise| date:'dd.MM.yyyy HH:mm:ss'}}, Sunset: {{sunset | date:'dd.MM.yyyy HH:mm:ss'}}</P>
+    <p>Description: {{currentWeather$.weather[0].description}}</p>
+    <p>Date: {{currentWeather$.dt*1000| date:'dd.MM.yyyy'}}</p>
+    <P>Sunrise: {{currentWeather$.sys.sunrise * 1000| date:'HH:mm:ss'}}, Sunset: {{currentWeather$.sys.sunset * 1000 | date:'HH:mm:ss'}}</P>
   </div>
+</div>
+
+<div class="forecast">
+  <Table>
+    <tr *ngFor="let forcast of forcasts.list">
+      <Table class="innerTable">
+        <tr><td>Date:{{forcast.dt*1000|date: 'dd.MM.yyyy HH:mm'}}h</td></tr>
+        <img src="assets/img/{{forcast.weather[0].icon}}.png">
+        <tr><td>Temperature: {{forcast.main.temp-275.15}} °C</td></tr>
+        <tr><td>Min: {{forcast.main.temp_min-275.15}} °C, Max: {{forcast.main.temp_max-275.15}} °C</td></tr>
+        <p>Description: {{forcast.weather[0].description}}</p>
+        <tr><td>Humidity: {{forcast.main.humidity}} %</td></tr>
+        <tr><td>Clouds: {{forcast.clouds.all}} %</td></tr>
+        <tr><td>Wind Speed: {{forcast.wind.speed}} m/s, Deg: {{forcast.wind.deg}}</td></tr>
+      </Table>
+      <br>
+    </tr>
+  </Table>
 </div>

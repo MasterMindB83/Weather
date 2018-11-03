@@ -7,3 +7,10 @@
 .conteiner{
     padding-left: 300px;
 }
+.innerTable{
+    background-color:  #0000ff;
+    color: white;
+}
+.green{
+    background-color: green;
+}

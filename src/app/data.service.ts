@@ -13,4 +13,7 @@ export class DataService {
     return this.http.get('https://api.openweathermap.org/data/2.5/weather?q=' +
     city + '&appid=cdc1b906ec2ba962977a603b61686fc4');
   }
+  getForecast(city) {
+    return this.http.get('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=cdc1b906ec2ba962977a603b61686fc4');
+  }
 }
