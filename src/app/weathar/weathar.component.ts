@@ -15,10 +15,12 @@ export class WeatharComponent implements OnInit {
   city: string;
   sunrise: number;
   sunset: number;
+  tempMin: number;
+  tempMax: number;
     constructor(private data: DataService) {
       // this.city = 'Nis';
       this.currentWeather$ = {coord: {lon: 0, lat: 0},
-      weather: {id: 0, main: '', description: '', icon: 'o1n'},
+      weather: {id: 0, main: '', description: '', icon: ''},
       base: '',
       main: {temp: 0, pressure: 0, humidity: 0, temp_min: 0, temp_max: 0},
       visibility: 0,
@@ -36,17 +38,17 @@ export class WeatharComponent implements OnInit {
      this.getWeather();*/
   }
   getWeather() {
-    /*this.data.getWeather(this.city).subscribe((data: IWeather) => this.currentWeather$ = data);
+    this.data.getWeather(this.city).subscribe((data: IWeather) => this.currentWeather$ = data);
     if (this.currentWeather$.dt > 0) {
       this.formatData();
-    }*/
-  }
-  kalvinToCelzious(temp: number) {
+    }
   }
   formatData() {
     this.date = this.currentWeather$.dt * 1000;
     this.temp = this.currentWeather$.main.temp - 275.15;
     this.sunrise = this.currentWeather$.sys.sunrise * 1000;
     this.sunset = this.currentWeather$.sys.sunset * 1000;
+    this.tempMin = this.currentWeather$.main.temp_min - 275.15;
+    this.tempMax = this.currentWeather$.main.temp_max - 275.15;
   }
 }

@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { WeatharComponent } from './weathar/weathar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ForecastComponent } from './forecast/forecast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatharComponent
+    WeatharComponent,
+    ForecastComponent
   ],
   imports: [
     BrowserModule,
