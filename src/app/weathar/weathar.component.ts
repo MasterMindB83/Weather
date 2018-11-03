@@ -20,7 +20,6 @@ export class WeatharComponent implements OnInit{
   getWeather() {
     this.data.getWeather(this.city).subscribe((data: IWeather) => this.currentWeather$ = data);
     this.getForcast(this.city);
-    
   }
   getForcast(city) {
     return this.data.getForecast(city).subscribe((data: IForecast) => this.forcasts = data);
