@@ -1,3 +1,15 @@
-<p>
-  weathar works!
-</p>
+<div class="main">
+    <a>City:</a><input type="text" [(ngModel)]="city">
+    <button (click)="getWeather()">Weather</button>
+
+
+  <img src="assets/img/{{currentWeather$.weather.icon}}.png">
+  <p>{{currentWeather$.weather.icon}}</p>
+  <p>{{currentWeather$.name}},{{currentWeather$.sys.country}}</p>
+  <p>Lon:{{currentWeather$.coord.lon}},Lat:{{currentWeather$.coord.lat}}</p>
+  <p>Temperature: {{temp}} °C</p>
+  <p>Wind: {{currentWeather$.wind.speed}}</p>
+  <p>Description: {{currentWeather$.weather.description}}</p>
+  <p>Date: {{date| date}}</p>
+  <P>Sunrise: {{sunrise| date:'dd.MM.yyyy HH:mm:ss'}},Sunset: {{sunset | date:'dd.MM.yyyy HH:mm:ss'}}</P>
+</div>
