@@ -4,6 +4,8 @@
       <button (click)="getWeather()" class="green">Weather</button>
 
   <br>
+  
+ 
     <p>{{currentWeather$.name}}, {{currentWeather$.sys.country}}</p>
     <p>Lon:{{currentWeather$.coord.lon}}, Lat:{{currentWeather$.coord.lat}}</p>
     <img src="assets/img/{{currentWeather$.weather[0].icon}}.png">
