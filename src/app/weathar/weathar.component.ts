@@ -16,16 +16,11 @@ export class WeatharComponent implements OnInit{
     constructor(private data: DataService) {
   }
   ngOnInit() {
-    this.show = false;
   }
   getWeather() {
-    try {
     this.data.getWeather(this.city).subscribe((data: IWeather) => this.currentWeather$ = data);
     this.getForcast(this.city);
-    this.show = false;
-    } catch (Exception) {
-      this.show = true;
-    }
+    
   }
   getForcast(city) {
     return this.data.getForecast(city).subscribe((data: IForecast) => this.forcasts = data);
