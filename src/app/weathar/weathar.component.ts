@@ -9,7 +9,7 @@ import {IForecast} from '../interfaces';
   templateUrl: './weathar.component.html',
   styleUrls: ['./weathar.component.css']
 })
-export class WeatharComponent implements OnInit{
+export class WeatharComponent implements OnInit {
   currentWeather$: IWeather;
   city: string;
   forcasts: IForecast;
@@ -31,5 +31,10 @@ export class WeatharComponent implements OnInit{
   }
   getForcast(city) {
     return this.data.getForecast(city).subscribe((data: IForecast) => this.forcasts = data);
+  }
+  onKeydown(event) {
+    if (event.key === 'Enter') {
+      this.getWeather();
+    }
   }
 }

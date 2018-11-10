@@ -1,6 +1,6 @@
 <div class="conteiner">
   <div class="main">
-      <a>City:</a><input type="text" [(ngModel)]="city">
+      <a>City:</a><input type="text" [(ngModel)]="city" (keydown)="onKeydown($event)">
       <button (click)="getWeather()" class="green">Weather</button>
 
   <br>
