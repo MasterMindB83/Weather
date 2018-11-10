@@ -13,12 +13,20 @@ export class WeatharComponent implements OnInit{
   currentWeather$: IWeather;
   city: string;
   forcasts: IForecast;
+  show: boolean;
     constructor(private data: DataService) {
   }
   ngOnInit() {
   }
   getWeather() {
-    this.data.getWeather(this.city).subscribe((data: IWeather) => this.currentWeather$ = data);
+
+    this.show = false;
+    this.data.getWeather(this.city).subscribe((data: IWeather) => {
+      this.currentWeather$ = data;
+      if (data != null) {
+        this.show = true;
+      }
+    });
     this.getForcast(this.city);
   }
   getForcast(city) {

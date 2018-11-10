@@ -5,20 +5,24 @@
 
   <br>
   
- 
-    <p>{{currentWeather$.name}}, {{currentWeather$.sys.country}}</p>
-    <p>Lon:{{currentWeather$.coord.lon}}, Lat:{{currentWeather$.coord.lat}}</p>
-    <img src="assets/img/{{currentWeather$.weather[0].icon}}.png">
-    <p>Temperature: {{currentWeather$.main.temp - 275.15}} °C</p>
-    <p>Min: {{currentWeather$.main.temp_min - 275.15}} °C, Max: {{currentWeather$.main.temp_max - 275.15}} °C</p>
-    <p>Wind: {{currentWeather$.wind.speed}} m/s</p>
-    <p>Description: {{currentWeather$.weather[0].description}}</p>
-    <p>Date: {{currentWeather$.dt*1000| date:'dd.MM.yyyy'}}</p>
-    <P>Sunrise: {{currentWeather$.sys.sunrise * 1000| date:'HH:mm:ss'}}, Sunset: {{currentWeather$.sys.sunset * 1000 | date:'HH:mm:ss'}}</P>
+  <div *ngIf="!show">
+    Error: 404 City not found.
+  </div>
+   <div *ngIf="show">
+      <p>{{currentWeather$.name}}, {{currentWeather$.sys.country}}</p>
+      <p>Lon:{{currentWeather$.coord.lon}}, Lat:{{currentWeather$.coord.lat}}</p>
+      <img src="assets/img/{{currentWeather$.weather[0].icon}}.png">
+      <p>Temperature: {{currentWeather$.main.temp - 275.15}} °C</p>
+      <p>Min: {{currentWeather$.main.temp_min - 275.15}} °C, Max: {{currentWeather$.main.temp_max - 275.15}} °C</p>
+      <p>Wind: {{currentWeather$.wind.speed}} m/s</p>
+      <p>Description: {{currentWeather$.weather[0].description}}</p>
+      <p>Date: {{currentWeather$.dt*1000| date:'dd.MM.yyyy'}}</p>
+      <P>Sunrise: {{currentWeather$.sys.sunrise * 1000| date:'HH:mm:ss'}}, Sunset: {{currentWeather$.sys.sunset * 1000 | date:'HH:mm:ss'}}</P>
+    </div>
   </div>
 </div>
 
-<div class="forecast">
+<div class="forecast" *ngIf="show">
   <Table>
     <tr *ngFor="let forcast of forcasts.list">
       <Table class="innerTable">
