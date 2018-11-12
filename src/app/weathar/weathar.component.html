@@ -5,19 +5,23 @@
 
   <br>
   
-  <div *ngIf="!show">
+  <div *ngIf="!show && showError">
     Error: 404 City not found.
   </div>
    <div *ngIf="show">
-      <p>{{currentWeather$.name}}, {{currentWeather$.sys.country}}</p>
-      <p>Lon:{{currentWeather$.coord.lon}}, Lat:{{currentWeather$.coord.lat}}</p>
-      <img src="assets/img/{{currentWeather$.weather[0].icon}}.png">
-      <p>Temperature: {{currentWeather$.main.temp - 275.15}} °C</p>
-      <p>Min: {{currentWeather$.main.temp_min - 275.15}} °C, Max: {{currentWeather$.main.temp_max - 275.15}} °C</p>
-      <p>Wind: {{currentWeather$.wind.speed}} m/s</p>
-      <p>Description: {{currentWeather$.weather[0].description}}</p>
-      <p>Date: {{currentWeather$.dt*1000| date:'dd.MM.yyyy'}}</p>
-      <P>Sunrise: {{currentWeather$.sys.sunrise * 1000| date:'HH:mm:ss'}}, Sunset: {{currentWeather$.sys.sunset * 1000 | date:'HH:mm:ss'}}</P>
+     <table>
+        <tr><td colspan="2">{{currentWeather$.name}}, {{currentWeather$.sys.country}}</td></tr>
+        <tr><td colspan="2">Lon:{{currentWeather$.coord.lon}}, Lat:{{currentWeather$.coord.lat}}<tr><td>
+        <tr>
+          <td class="width"><img src="assets/img/{{currentWeather$.weather[0].icon}}.png"></td>
+          <td class="align-left">{{currentWeather$.main.temp - 275.15}} °C</td>
+        </tr>
+        <tr><td colspan="2">Min: {{currentWeather$.main.temp_min - 275.15}} °C, Max: {{currentWeather$.main.temp_max - 275.15}} °C</td></tr>
+        <tr><td colspan="2">Wind: {{currentWeather$.wind.speed}} m/s</td></tr>
+        <tr><td colspan="2">Description: {{currentWeather$.weather[0].description}}</td></tr>
+        <tr><td colspan="2">Date: {{currentWeather$.dt*1000| date:'dd.MM.yyyy'}}</td></tr>
+        <tr><td colspan="2">Sunrise: {{currentWeather$.sys.sunrise * 1000| date:'HH:mm:ss'}}, Sunset: {{currentWeather$.sys.sunset * 1000 | date:'HH:mm:ss'}}</td></tr>
+     </table>
     </div>
   </div>
 </div>

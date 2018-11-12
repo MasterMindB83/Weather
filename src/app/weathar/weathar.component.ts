@@ -12,14 +12,16 @@ import {IForecast} from '../interfaces';
 export class WeatharComponent implements OnInit {
   currentWeather$: IWeather;
   city: string;
+  showError: boolean;
   forcasts: IForecast;
   show: boolean;
     constructor(private data: DataService) {
+      this.showError = false;
   }
   ngOnInit() {
   }
   getWeather() {
-
+    this.showError = true;
     this.show = false;
     this.data.getWeather(this.city).subscribe((data: IWeather) => {
       this.currentWeather$ = data;
